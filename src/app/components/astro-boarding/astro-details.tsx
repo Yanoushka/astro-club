@@ -1,4 +1,11 @@
-import { Button, Card, CardActions, CardContent, Typography } from "@mui/joy";
+import {
+  Button,
+  Card,
+  CardActions,
+  CardContent,
+  Link,
+  Typography,
+} from "@mui/joy";
 import CustomTimePicker from "../shared/timepicker";
 import AstroInterest from "./astro-interest";
 
@@ -14,10 +21,13 @@ export default function AstroDetails() {
         </Typography>
         <CustomTimePicker label="Birth time" />
 
-        <AstroInterest />
+        {/* <AstroInterest /> */}
       </CardContent>
       <CardActions>
-        <Button size="small">Next</Button>
+        <Link href="/onboarding/form">
+          <Button>Back</Button>
+        </Link>
+        <Button>Next</Button>
       </CardActions>
     </Card>
   );

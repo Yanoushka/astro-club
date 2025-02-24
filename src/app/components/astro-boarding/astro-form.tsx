@@ -1,10 +1,13 @@
 import { useAstrologyStore } from "@/lib/store";
+import {
+  Button,
+  Card,
+  CardActions,
+  CardContent,
+  Link,
+  Typography,
+} from "@mui/joy";
 import { Box } from "@mui/joy";
-import Button from "@mui/material/Button";
-import Card from "@mui/material/Card";
-import CardActions from "@mui/material/CardActions";
-import CardContent from "@mui/material/CardContent";
-import Typography from "@mui/material/Typography";
 import { useRouter } from "next/navigation";
 import * as React from "react";
 import Calendar from "../shared/calendar";
@@ -86,9 +89,10 @@ export default function AstroForm() {
       </CardContent>
 
       <CardActions>
-        <Button size="small" onClick={handleSubmit}>
-          Next
-        </Button>
+        <Link href="/">
+          <Button>Cancel</Button>
+        </Link>
+        <Button onClick={handleSubmit}>Next</Button>
       </CardActions>
     </Card>
   );
