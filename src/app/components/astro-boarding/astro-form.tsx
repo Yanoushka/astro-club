@@ -4,7 +4,6 @@ import {
   Card,
   CardActions,
   CardContent,
-  Link,
   Typography,
 } from "@mui/joy";
 import { Box } from "@mui/joy";
@@ -20,9 +19,8 @@ export default function AstroForm() {
     birthDate: false,
     birthLocation: false,
   });
-
-  const setUserData = useAstrologyStore((state) => state.setUserData);
   const router = useRouter();
+  const setUserData = useAstrologyStore((state) => state.setUserData);
 
   const onDateChange = (newDate: Date | null) => {
     setSelectedDate(newDate);
@@ -89,9 +87,6 @@ export default function AstroForm() {
       </CardContent>
 
       <CardActions>
-        <Link href="/">
-          <Button>Cancel</Button>
-        </Link>
         <Button onClick={handleSubmit}>Next</Button>
       </CardActions>
     </Card>

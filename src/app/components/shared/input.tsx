@@ -1,9 +1,4 @@
-import {
-  FormControl,
-  FormHelperText,
-  FormLabel,
-  Input,
-} from "@mui/joy";
+import { FormControl, FormHelperText, FormLabel, Input } from "@mui/joy";
 import React from "react";
 
 interface InputCustomProps {
@@ -38,7 +33,7 @@ const InputCustom: React.FC<InputCustomProps> = ({
           onBlur={onBlur}
           required={required}
         />
-        <FormHelperText>{!!error ? helperText : ''}</FormHelperText>
+        <FormHelperText>{!!error ? helperText : ""}</FormHelperText>
       </FormControl>
     </div>
   );

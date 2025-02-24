@@ -1,44 +1,42 @@
-import React, { useState } from "react";
-import { FormHelperText, FormLabel } from "@mui/material";
+import { FormControl, FormLabel } from "@mui/joy";
 import { AdapterDayjs } from "@mui/x-date-pickers/AdapterDayjs";
-import { TimePicker } from "@mui/x-date-pickers/TimePicker";
 import { LocalizationProvider } from "@mui/x-date-pickers/LocalizationProvider";
+import { TimePicker } from "@mui/x-date-pickers/TimePicker";
 import { Dayjs } from "dayjs";
+import React, { useState } from "react";
 
 interface CustomTimePickerProps {
   label: string;
   value?: Dayjs | null;
   onChange?: (newTime: Dayjs | null) => void;
-  required?: boolean;
+  error?: boolean;
+  helperText?: string;
 }
 
 const CustomTimePicker: React.FC<CustomTimePickerProps> = ({
   label = "Select a time",
   value,
   onChange,
-  required = false,
+  error = false,
 }) => {
-  const [error, setError] = useState<string>("");
-
-  const handleBlur = () => {
-    if (required && !value) {
-      setError(`${label} est requis.`);
-    } else {
-      setError("");
-    }
-  };
-
   return (
-    <LocalizationProvider dateAdapter={AdapterDayjs}>
-      <FormLabel>{label}</FormLabel>
-      <TimePicker
-        ampm={false} // Utiliser le format 24h (HH:mm)
-        value={value}
-        onChange={onChange}
-        onClose={handleBlur} // Vérifie la validation lors de la fermeture
-      />
-      {error && <FormHelperText error>{error}</FormHelperText>}
-    </LocalizationProvider>
+    <FormControl error={error}>
+      <LocalizationProvider dateAdapter={AdapterDayjs}>
+        <FormLabel>{label}</FormLabel>
+        <TimePicker
+          ampm={false}
+          value={value}
+          onChange={onChange}
+          slotProps={{
+            textField: {
+              inputProps: { readOnly: true },
+              error: !!error,
+              helperText: error ? "Date is required" : "",
+            },
+          }}
+        />
+      </LocalizationProvider>
+    </FormControl>
   );
 };
 

@@ -21,7 +21,7 @@ const Calendar: React.FC<CalendarProps> = ({
   error = false,
 }) => {
   return (
-    <FormControl error={error}>
+    <FormControl fullWidth error={error}>
       <FormLabel>{label}</FormLabel>
       <LocalizationProvider dateAdapter={AdapterDayjs}>
         <DatePicker
