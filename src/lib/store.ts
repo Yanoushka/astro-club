@@ -1,7 +1,8 @@
+import { Dayjs } from 'dayjs';
 import { create } from 'zustand';
 
 interface UserData {
-    birthDate?: string;
+    birthDate?: Dayjs;
     birthLocation?: string;
     birthTime?: string;
     astroInterest?: string;

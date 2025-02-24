@@ -5,40 +5,29 @@ import { LocalizationProvider } from "@mui/x-date-pickers/LocalizationProvider";
 import { Dayjs } from "dayjs";
 import React from "react";
 
-interface RequiredDatePickerProps {
+interface CalendarProps {
   label?: string;
   value: Dayjs | null;
   onChange: (newDate: Dayjs | null) => void;
   required?: boolean;
   error?: boolean;
+  helperText?: string;
 }
 
-const RequiredDatePicker: React.FC<RequiredDatePickerProps> = ({
+const Calendar: React.FC<CalendarProps> = ({
   label = "Select a date",
   value,
   onChange,
-  required = false,
+  error = false,
 }) => {
-  const [error, setError] = React.useState<string>("");
-
-  const validateDate = (newDate: Dayjs | null) => {
-    if (required && !newDate) {
-      setError(`${label} is required.`);
-    } else {
-      setError("");
-    }
-  };
-
-  const handleDateChange = (newDate: Dayjs | null) => {
-    validateDate(newDate);
-    onChange(newDate);
-  };
-
   return (
-    <FormControl>
+    <FormControl error={error}>
+      <FormLabel>{label}</FormLabel>
       <LocalizationProvider dateAdapter={AdapterDayjs}>
-        <FormLabel>{label}</FormLabel>
         <DatePicker
+          value={value}
+          onChange={onChange}
+          disableFuture
           slotProps={{
             textField: {
               inputProps: { readOnly: true },
@@ -51,13 +40,10 @@ const RequiredDatePicker: React.FC<RequiredDatePickerProps> = ({
               },
             },
           }}
-          disableFuture
-          value={value}
-          onChange={handleDateChange}
         />
       </LocalizationProvider>
     </FormControl>
   );
 };
 
-export default RequiredDatePicker;
+export default Calendar;

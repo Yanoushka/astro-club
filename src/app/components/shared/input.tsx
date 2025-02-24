@@ -1,4 +1,9 @@
-import { FormControl, FormHelperText, FormLabel, Input } from "@mui/joy";
+import {
+  FormControl,
+  FormHelperText,
+  FormLabel,
+  Input,
+} from "@mui/joy";
 import React from "react";
 
 interface InputCustomProps {
@@ -6,7 +11,10 @@ interface InputCustomProps {
   placeholder: string;
   value?: string;
   onChange?: (e: React.ChangeEvent<HTMLInputElement>) => void;
+  onBlur?: (e: React.FocusEvent<HTMLInputElement>) => void;
   required?: boolean;
+  error?: boolean;
+  helperText?: string;
 }
 
 const InputCustom: React.FC<InputCustomProps> = ({
@@ -14,33 +22,25 @@ const InputCustom: React.FC<InputCustomProps> = ({
   placeholder,
   value,
   onChange,
+  onBlur,
   required,
+  error,
+  helperText,
 }) => {
-  const [error, setError] = React.useState<string>("");
-
-  const handleBlur = (event: React.FocusEvent<HTMLInputElement>) => {
-    if (required && !event.target.value) {
-      setError(`${label} is Required.`);
-    } else {
-      setError("");
-      if (onChange) {
-        onChange(event);
-      }
-    }
-  };
-
   return (
-    <FormControl error={!!error}>
-      <FormLabel>{label}</FormLabel>
-      <Input
-        placeholder={placeholder}
-        value={value}
-        onChange={onChange}
-        onBlur={handleBlur}
-        required={required}
-      />
-      {error && <FormHelperText>{error}</FormHelperText>}
-    </FormControl>
+    <div>
+      <FormControl error={error}>
+        <FormLabel>{label}</FormLabel>
+        <Input
+          placeholder={placeholder}
+          value={value}
+          onChange={onChange}
+          onBlur={onBlur}
+          required={required}
+        />
+        <FormHelperText>{!!error ? helperText : ''}</FormHelperText>
+      </FormControl>
+    </div>
   );
 };
 
