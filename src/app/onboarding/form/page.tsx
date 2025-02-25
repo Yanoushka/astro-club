@@ -9,7 +9,6 @@ import {
   Card,
   CardActions,
   CardContent,
-  Link,
   Typography,
 } from "@mui/joy";
 import { useRouter } from "next/navigation";
@@ -22,6 +21,7 @@ export default function AstroForm() {
     birthDate: false,
     birthLocation: false,
   });
+
   const router = useRouter();
   const setUserData = useAstrologyStore((state) => state.setUserData);
 
@@ -39,6 +39,7 @@ export default function AstroForm() {
   const handleSubmit = () => {
     let isValid = true;
     let newErrors = { birthDate: false, birthLocation: false };
+
     if (!selectedDate) {
       newErrors.birthDate = true;
       isValid = false;
@@ -60,40 +61,83 @@ export default function AstroForm() {
   };
 
   return (
-    <Card sx={{ minWidth: 500, minHeight: 350 }}>
-      <CardContent>
-        <Typography variant="h5" component="div">
-          <h1>Your Cosmic Origins!</h1>
-        </Typography>
-        <Typography sx={{ color: "text.secondary", mb: 1.5 }}>
-          Let's start with the basics of your astrological profile
-        </Typography>
+    <Box
+      sx={{
+        display: "flex",
+        justifyContent: "center",
+        alignItems: "center",
+      }}
+    >
+      <Card
+        sx={{
+          minWidth: 500,
+          minHeight: 400,
+          p: 3,
+          borderRadius: "16px",
+          boxShadow: "lg",
+          backgroundColor: "white",
+        }}
+      >
+        <CardContent>
+          <Typography
+            variant="h4"
+            sx={{
+              textAlign: "center",
+              fontWeight: "bold",
+              color: "#333",
+              mb: 1,
+            }}
+          >
+            ✨ Your Cosmic Origins! ✨
+          </Typography>
+          <Typography
+            sx={{
+              textAlign: "center",
+              color: "text.secondary",
+              mb: 3,
+            }}
+          >
+            Let's start with the basics of your astrological profile.
+          </Typography>
 
-        <Box sx={{ height: "80px" }}>
-          <Calendar
-            onChange={onDateChange}
-            required={true}
-            error={errors.birthDate}
-          />
-        </Box>
+          <Box sx={{ mb: 2, height: 80}}>
+            <Calendar
+              onChange={onDateChange}
+              required={true}
+              error={errors.birthDate}
+            />
+          </Box>
 
-        <Box sx={{ height: "80px" }}>
-          <InputCustom
-            label="Place of birth"
-            placeholder="New York"
-            required={true}
-            onChange={onCityChange}
-            error={errors.birthLocation}
-            helperText="City is required"
-          />
-        </Box>
-      </CardContent>
+          <Box sx={{ mb: 2, height: 80}}>
+            <InputCustom
+              label="Place of Birth"
+              placeholder="Enter your birth city"
+              required={true}
+              onChange={onCityChange}
+              error={errors.birthLocation}
+              helperText={errors.birthLocation ? "City is required" : ""}
+            />
+          </Box>
+        </CardContent>
 
-      <CardActions>
-        <Link onClick={handleSubmit}>
-          <Button>Next</Button>
-        </Link>
-      </CardActions>
-    </Card>
+        <CardActions sx={{ justifyContent: "center" }}>
+          <Button
+            onClick={handleSubmit}
+            sx={{
+              backgroundColor: "#556cd6",
+              color: "#fff",
+              fontSize: "16px",
+              fontWeight: "bold",
+              padding: "10px 20px",
+              borderRadius: "8px",
+              transition: "all 0.3s ease",
+              "&:hover": { backgroundColor: "#334ac1" },
+            }}
+          >
+            Next
+          </Button>
+        </CardActions>
+      </Card>
+    </Box>
   );
 }

@@ -9,7 +9,6 @@ import {
   Card,
   CardActions,
   CardContent,
-  Link,
   Typography,
 } from "@mui/joy";
 import { useRouter } from "next/navigation";
@@ -60,7 +59,6 @@ export default function AstroDetails() {
         astroInterest: selectedInterest,
       });
       router.push("/onboarding/resume");
-      console.log("push: ");
     }
   };
 
@@ -75,35 +73,67 @@ export default function AstroDetails() {
   };
 
   return (
-    <Card sx={{ minWidth: 500, minHeight: 350 }}>
+    <Card
+      sx={{
+        minWidth: 500,
+        minHeight: 350,
+        borderRadius: "16px",
+        boxShadow: "0 4px 20px rgba(0, 0, 0, 0.1)",
+        backgroundColor: "white",
+        padding: "20px",
+      }}
+    >
       <CardContent>
-        <Typography variant="h5" component="div">
-          <h1>Go deeper !</h1>
+        <Typography variant="h4" component="div" sx={{ fontWeight: 'bold', mb: 2 }}>
+          Go Deeper!
         </Typography>
-        <Typography sx={{ color: "text.secondary", mb: 1.5 }}>
-          Let's keep going with the deep details of your astrological profile
+        <Typography sx={{ color: "text.secondary", mb: 3 }}>
+          Let's keep going with the deep details of your astrological profile.
         </Typography>
-        <Box sx={{ height: "80px", marginBottom: "20px" }}>
+
+        <Box sx={{ marginBottom: "20px", height: 100 }}>
           <CustomTimePicker
-            label="Birth time"
+            label="Birth Time"
             onChange={onTimeChange}
             error={errors.birthTime}
+            sx={{
+              borderRadius: "8px",
+              border: errors.birthTime ? "1px solid red" : "1px solid #ccc",
+              transition: "border 0.3s ease",
+            }}
           />
         </Box>
-        <Box sx={{ height: "80px" }}>
+        
+        <Box sx={{ marginBottom: "20px", height: 80 }}>
           <CustomSelect
-            label="Select an interest"
+            label="Select an Interest"
             options={interests}
             onChange={onInterestChange}
             error={errors.astroInterest}
             helperText={errors.astroInterest ? "Please add an interest" : ""}
+            sx={{
+              borderRadius: "8px",
+              border: errors.astroInterest ? "1px solid red" : "1px solid #ccc",
+              transition: "border 0.3s ease",
+            }}
           />
         </Box>
       </CardContent>
       <CardActions>
-        <Link onClick={handleSubmit}>
-          <Button>Next</Button>
-        </Link>
+        <Button
+          onClick={handleSubmit}
+          variant="contained"
+          sx={{
+            backgroundColor: "#6B73FF",
+            color: "white",
+            borderRadius: "8px",
+            '&:hover': {
+              backgroundColor: "#556cd6",
+            },
+          }}
+        >
+          Next
+        </Button>
       </CardActions>
     </Card>
   );

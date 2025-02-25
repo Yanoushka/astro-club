@@ -18,7 +18,22 @@ export default function PaymentModal({ onPaymentSuccess }: PaymentModalProps) {
 
   return (
     <div>
-      <Button onClick={() => setOpen(true)}>Payer</Button>
+      <Button
+        onClick={() => setOpen(true)}
+        variant="contained"
+        sx={{
+          backgroundColor: "#6B73FF",
+          color: "white",
+          "&:hover": {
+            backgroundColor: "#556cd6",
+          },
+          borderRadius: "8px",
+          padding: "10px 20px",
+          fontWeight: "bold",
+        }}
+      >
+        Payer
+      </Button>
 
       <Modal open={open} onClose={() => setOpen(false)}>
         <Box
@@ -32,17 +47,23 @@ export default function PaymentModal({ onPaymentSuccess }: PaymentModalProps) {
             boxShadow: 24,
             p: 4,
             borderRadius: 2,
+            border: "1px solid #ddd",
           }}
         >
-          <Typography sx={{ color: "text.secondary", mb: 1.5 }}>
-            Numéro : 4242 4242 4242 4242 Date : 12/34 CVC : 123
+          <Typography variant="h5" sx={{ fontWeight: "bold", marginBottom: 2 }}>
+            Détails de paiement
+          </Typography>
+          <Typography sx={{ color: "text.secondary", marginBottom: 2 }}>
+            Numéro : 4242 4242 4242 4242 <br />
+            Date : 12/34 <br />
+            CVC : 123
           </Typography>
           {paymentSuccess ? (
             <Typography
               variant="h6"
-              sx={{ textAlign: "center", color: "green" }}
+              sx={{ textAlign: "center", color: "green", marginTop: 2 }}
             >
-              ✅ Payment done, thanks ! 🎉
+              ✅ Paiement effectué avec succès, merci ! 🎉
             </Typography>
           ) : (
             <PaymentPage
