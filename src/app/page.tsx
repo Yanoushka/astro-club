@@ -4,11 +4,6 @@ export default function Home() {
   return (
     <div className="max-w-3xl w-full text-center space-y-8">
       <div className="space-y-4">
-        <div className="flex justify-center">
-          <div className="relative">
-            {/* Logo */}
-          </div>
-        </div>
         <h1 className="text-4xl md:text-6xl font-bold tracking-tight">
           Discover Your Cosmic Path
         </h1>
