@@ -7,7 +7,7 @@
     "build": "next build",
     "start": "next start",
     "lint": "next lint",
-    "predeploy": "next build && next export",
+    "predeploy": "npm run build",
     "deploy": "gh-pages -d out"
   },
   "dependencies": {
@@ -29,6 +29,7 @@
     "tailwind-merge": "^3.0.1",
     "zustand": "^5.0.3"
   },
+  "homepage": "https://yanoushka.github.io/astro-club/>",
   "devDependencies": {
     "@eslint/eslintrc": "^3",
     "@types/node": "^20",
@@ -39,6 +40,6 @@
     "gh-pages": "^6.3.0",
     "postcss": "^8",
     "tailwindcss": "^3.4.1",
-	"typescript": "^5"
+    "typescript": "^5"
   }
 }
