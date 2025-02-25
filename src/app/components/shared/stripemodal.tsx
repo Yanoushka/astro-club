@@ -44,7 +44,7 @@ export default function PaymentModal({ onPaymentSuccess }: PaymentModalProps) {
             left: "50%",
             transform: "translate(-50%, -50%)",
             width: "90%",
-            maxWidth: "400px",
+            maxWidth: "500px",
             bgcolor: "white",
             boxShadow: 24,
             p: 4,
