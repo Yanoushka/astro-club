@@ -1,4 +1,4 @@
-import AdbIcon from "@mui/icons-material/Adb";
+import StarIcon from "@mui/icons-material/Star";
 import AppBar from "@mui/material/AppBar";
 import Container from "@mui/material/Container";
 import Toolbar from "@mui/material/Toolbar";
@@ -15,7 +15,7 @@ export default function ResponsiveAppBar() {
     >
       <Container maxWidth="xl">
         <Toolbar disableGutters>
-          <AdbIcon
+          <StarIcon
             sx={{
               display: { xs: "none", md: "flex" },
               color: "#f9c74f",
