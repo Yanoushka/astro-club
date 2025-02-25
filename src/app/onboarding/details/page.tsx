@@ -79,29 +79,32 @@ export default function AstroDetails() {
         justifyContent: "center",
         alignItems: "center",
         padding: "20px",
-        height: "100vh",
+        flexGrow: 1,
         overflow: "auto",
       }}
     >
       <Card
         sx={{
           width: { xs: "90%" },
-          minHeight: 300,
+          maxHeight: "80vh",
           borderRadius: "16px",
           boxShadow: "0 4px 20px rgba(0, 0, 0, 0.1)",
           backgroundColor: "white",
           padding: "20px",
+          overflowY: "auto",
         }}
       >
         <CardContent>
           <Typography
             variant="h4"
             component="div"
-            sx={{ fontWeight: 'bold', mb: 2, textAlign: "center" }}
+            sx={{ fontWeight: "bold", mb: 2, textAlign: "center" }}
           >
             Go Deeper!
           </Typography>
-          <Typography sx={{ color: "text.secondary", mb: 3, textAlign: "center" }}>
+          <Typography
+            sx={{ color: "text.secondary", mb: 3, textAlign: "center" }}
+          >
             Let's keep going with the deep details of your astrological profile.
           </Typography>
 
@@ -118,7 +121,7 @@ export default function AstroDetails() {
               }}
             />
           </Box>
-          
+
           <Box sx={{ marginBottom: "20px", height: 80 }}>
             <CustomSelect
               label="Select an Interest"
@@ -128,7 +131,9 @@ export default function AstroDetails() {
               helperText={errors.astroInterest ? "Please add an interest" : ""}
               sx={{
                 borderRadius: "8px",
-                border: errors.astroInterest ? "1px solid red" : "1px solid #ccc",
+                border: errors.astroInterest
+                  ? "1px solid red"
+                  : "1px solid #ccc",
                 transition: "border 0.3s ease",
                 width: "100%",
               }}
@@ -144,7 +149,7 @@ export default function AstroDetails() {
               color: "white",
               borderRadius: "8px",
               width: "100%",
-              '&:hover': {
+              "&:hover": {
                 backgroundColor: "#556cd6",
               },
             }}

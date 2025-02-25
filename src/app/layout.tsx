@@ -17,12 +17,12 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body
-        className={`${geistSans.variable} ${geistMono.variable} antialiased bg-[#1a1a2e] text-white overflow-x-hidden`} // Prevent horizontal scroll
+        className={`${geistSans.variable} ${geistMono.variable} antialiased bg-[#1a1a2e] text-white overflow-x-hidden flex flex-col h-screen`}
       >
         <ResponsiveAppBar />
 
-        <div className="grid grid-rows-[20px_1fr_20px] items-center justify-items-center min-h-screen px-4 sm:px-8 lg:px-16">
-          <main className="flex flex-col gap-8 row-start-2 items-center sm:items-start">
+        <div className="flex-grow flex flex-col items-center justify-center px-4 sm:px-8 lg:px-16">
+          <main className="flex flex-col gap-4 row-start-2 items-center sm:items-start">
             {children}
           </main>
         </div>

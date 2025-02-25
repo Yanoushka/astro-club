@@ -54,11 +54,12 @@ export default function AstroResume() {
       <Card
         sx={{
           width: { xs: "90%", sm: "400px" },
-          minHeight: 400,
+          maxHeight: "80vh",
           borderRadius: "16px",
           boxShadow: "0 4px 20px rgba(0, 0, 0, 0.1)",
           backgroundColor: "white",
           padding: "20px",
+          overflowY: "auto",
         }}
       >
         <CardContent>
@@ -69,7 +70,9 @@ export default function AstroResume() {
           >
             Your Cosmic Reading
           </Typography>
-          <Typography sx={{ color: "text.secondary", mb: 2, textAlign: "center" }}>
+          <Typography
+            sx={{ color: "text.secondary", mb: 2, textAlign: "center" }}
+          >
             Based on your unique celestial alignment:
           </Typography>
 

@@ -67,19 +67,19 @@ export default function AstroForm() {
         justifyContent: "center",
         alignItems: "center",
         padding: "20px",
-        height: "100vh",
+        flexGrow: 1,
         overflow: "auto",
       }}
     >
       <Card
         sx={{
           width: { xs: "90%" },
-          minHeight: 400,
-          minWidth: 300,
+          maxHeight: "80vh",
           p: 3,
           borderRadius: "16px",
           boxShadow: "lg",
           backgroundColor: "white",
+          overflowY: "auto",
         }}
       >
         <CardContent>
