@@ -60,7 +60,7 @@ export default function AstroForm() {
   };
 
   return (
-    <Card sx={{ minWidth: 400, minHeight: 350 }}>
+    <Card sx={{ minWidth: 500, minHeight: 350 }}>
       <CardContent>
         <Typography variant="h5" component="div">
           <h1>Your Cosmic Origins!</h1>
