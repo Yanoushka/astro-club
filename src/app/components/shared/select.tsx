@@ -1,5 +1,11 @@
 import { FormHelperText } from "@mui/joy";
-import { FormControl, InputLabel, MenuItem, Select } from "@mui/material";
+import {
+  FormControl,
+  InputLabel,
+  MenuItem,
+  Select,
+  SelectChangeEvent,
+} from "@mui/material";
 import React from "react";
 
 interface SelectOption {
@@ -24,8 +30,8 @@ const CustomSelect: React.FC<CustomSelectProps> = ({
 }) => {
   const [selectedValue, setSelectedValue] = React.useState<string>("");
 
-  const handleChange = (e: React.ChangeEvent<{ value: unknown }>) => {
-    const value = e.target.value as string;
+  const handleChange = (e: SelectChangeEvent<string>) => {
+    const value = e.target.value;
     setSelectedValue(value);
     onChange?.(value);
   };
@@ -33,7 +39,16 @@ const CustomSelect: React.FC<CustomSelectProps> = ({
   return (
     <FormControl fullWidth error={error}>
       <InputLabel>{label}</InputLabel>
-      <Select value={selectedValue} onChange={handleChange} displayEmpty>
+      <Select
+        value={selectedValue}
+        onChange={handleChange}
+        displayEmpty
+        sx={{
+          borderRadius: "8px",
+          transition: "border 0.3s ease",
+          width: "100%",
+        }}
+      >
         {options.map((option) => (
           <MenuItem key={option.value} value={option.value}>
             {option.label}

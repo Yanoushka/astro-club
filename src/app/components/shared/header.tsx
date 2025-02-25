@@ -3,11 +3,8 @@ import AppBar from "@mui/material/AppBar";
 import Container from "@mui/material/Container";
 import Toolbar from "@mui/material/Toolbar";
 import Typography from "@mui/material/Typography";
-import { useMediaQuery } from "@mui/material";
 
 export default function ResponsiveAppBar() {
-  const isLargeScreen = useMediaQuery("(min-width:600px)");
-
   return (
     <AppBar
       position="static"
@@ -23,7 +20,7 @@ export default function ResponsiveAppBar() {
               display: { xs: "none", md: "flex" },
               color: "#f9c74f",
               mr: 1,
-              fontSize: isLargeScreen ? "40px" : "30px",
+              fontSize: "40px",
             }}
           />
           <Typography
@@ -39,7 +36,7 @@ export default function ResponsiveAppBar() {
               letterSpacing: ".3rem",
               color: "#f9c74f",
               textDecoration: "none",
-              fontSize: isLargeScreen ? "1.5rem" : "1.2rem",
+              fontSize: "1.5rem",
             }}
           >
             AstroClub

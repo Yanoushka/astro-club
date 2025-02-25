@@ -2,9 +2,9 @@ import { Dayjs } from 'dayjs';
 import { create } from 'zustand';
 
 interface UserData {
-    birthDate?: Dayjs;
+    birthDate?: string;
     birthLocation?: string;
-    birthTime?: string;
+    birthTime?: string | null;
     astroInterest?: string;
 }
 

@@ -3,14 +3,9 @@
 import Calendar from "@/app/components/shared/calendar";
 import InputCustom from "@/app/components/shared/input";
 import { useAstrologyStore } from "@/lib/store";
-import {
-  Box,
-  Button,
-  Card,
-  CardActions,
-  CardContent,
-  Typography,
-} from "@mui/joy";
+import { Box, Button, Card, CardActions, CardContent } from "@mui/joy";
+import { Typography } from "@mui/material";
+import { Dayjs } from "dayjs";
 import { useRouter } from "next/navigation";
 import * as React from "react";
 
@@ -25,8 +20,8 @@ export default function AstroForm() {
   const router = useRouter();
   const setUserData = useAstrologyStore((state) => state.setUserData);
 
-  const onDateChange = (newDate: Date | null) => {
-    setSelectedDate(newDate);
+  const onDateChange = (newDate: Dayjs | null) => {
+    setSelectedDate(newDate ? newDate.toDate() : null);
     if (newDate) setErrors((prev) => ({ ...prev, birthDate: false }));
   };
 

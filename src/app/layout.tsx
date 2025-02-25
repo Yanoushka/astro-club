@@ -3,7 +3,7 @@
 import { Geist, Geist_Mono } from "next/font/google";
 import ResponsiveAppBar from "./components/shared/header";
 import "./globals.css";
-import { Typography } from "@mui/joy";
+import FooterAppBar from "./components/shared/footer";
 
 const geistSans = Geist({ variable: "--font-geist-sans", subsets: ["latin"] });
 const geistMono = Geist_Mono({
@@ -27,11 +27,7 @@ export default function RootLayout({
           </main>
         </div>
 
-        <footer className="bg-[#23234d] py-4 text-center w-full">
-          <Typography variant="body2" color="white">
-            &copy; Luni - Made with love
-          </Typography>
-        </footer>
+        <FooterAppBar />
       </body>
     </html>
   );

@@ -7,7 +7,7 @@ import React from "react";
 
 interface CalendarProps {
   label?: string;
-  value: Dayjs | null;
+  value?: Dayjs | null;
   onChange: (newDate: Dayjs | null) => void;
   required?: boolean;
   error?: boolean;

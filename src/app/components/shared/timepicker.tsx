@@ -3,7 +3,7 @@ import { AdapterDayjs } from "@mui/x-date-pickers/AdapterDayjs";
 import { LocalizationProvider } from "@mui/x-date-pickers/LocalizationProvider";
 import { TimePicker } from "@mui/x-date-pickers/TimePicker";
 import { Dayjs } from "dayjs";
-import React, { useState } from "react";
+import React from "react";
 
 interface CustomTimePickerProps {
   label: string;
@@ -24,6 +24,11 @@ const CustomTimePicker: React.FC<CustomTimePickerProps> = ({
       <LocalizationProvider dateAdapter={AdapterDayjs}>
         <FormLabel>{label}</FormLabel>
         <TimePicker
+          sx={{
+            borderRadius: "8px",
+            transition: "border 0.3s ease",
+            width: "100%",
+          }}
           ampm={false}
           value={value}
           onChange={onChange}

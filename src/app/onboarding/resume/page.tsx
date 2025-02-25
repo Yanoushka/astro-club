@@ -2,14 +2,8 @@
 
 import PaymentModal from "@/app/components/shared/stripemodal";
 import { useAstrologyStore } from "@/lib/store";
-import {
-  Box,
-  Button,
-  Card,
-  CardActions,
-  CardContent,
-  Typography,
-} from "@mui/joy";
+import { Box, Card, CardActions, CardContent } from "@mui/joy";
+import { Button, Typography } from "@mui/material";
 import { useRouter } from "next/navigation";
 import { useEffect, useState } from "react";
 

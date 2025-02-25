@@ -3,21 +3,16 @@
 import CustomSelect from "@/app/components/shared/select";
 import CustomTimePicker from "@/app/components/shared/timepicker";
 import { useAstrologyStore } from "@/lib/store";
-import {
-  Box,
-  Button,
-  Card,
-  CardActions,
-  CardContent,
-  Typography,
-} from "@mui/joy";
+import { Box, Card, CardActions, CardContent } from "@mui/joy";
+import { Button, Typography } from "@mui/material";
+import { Dayjs } from "dayjs";
 import { useRouter } from "next/navigation";
 import React, { useEffect } from "react";
 
 export default function AstroDetails() {
   const router = useRouter();
   const setUserData = useAstrologyStore((state) => state.setUserData);
-  const [selectedTime, setSelectedTime] = React.useState<Date | null>(null);
+  const [selectedTime, setSelectedTime] = React.useState<Dayjs | null>(null);
   const [selectedInterest, setSelectedInterest] = React.useState("");
   const [errors, setErrors] = React.useState({
     birthTime: false,
@@ -55,21 +50,24 @@ export default function AstroDetails() {
 
     if (isValid) {
       setUserData({
-        birthTime: selectedTime?.toISOString(),
+        birthTime: selectedTime ? selectedTime.toISOString() : null,
         astroInterest: selectedInterest,
       });
       router.push("/onboarding/resume");
     }
   };
 
-  const onTimeChange = (newTime: Date | null) => {
+  const onTimeChange = (newTime: Dayjs | null) => {
     setSelectedTime(newTime);
     if (newTime) setErrors((prev) => ({ ...prev, birthTime: false }));
   };
 
-  const onInterestChange = (newInterest: string) => {
-    setSelectedInterest(newInterest);
-    if (newInterest) setErrors((prev) => ({ ...prev, astroInterest: false }));
+  const onInterestChange = (newInterest: string | null) => {
+    setSelectedInterest(newInterest || "");
+    setErrors((prev) => ({
+      ...prev,
+      astroInterest: newInterest ? false : true,
+    }));
   };
 
   return (
@@ -113,12 +111,6 @@ export default function AstroDetails() {
               label="Birth Time"
               onChange={onTimeChange}
               error={errors.birthTime}
-              sx={{
-                borderRadius: "8px",
-                border: errors.birthTime ? "1px solid red" : "1px solid #ccc",
-                transition: "border 0.3s ease",
-                width: "100%",
-              }}
             />
           </Box>
 
@@ -129,14 +121,6 @@ export default function AstroDetails() {
               onChange={onInterestChange}
               error={errors.astroInterest}
               helperText={errors.astroInterest ? "Please add an interest" : ""}
-              sx={{
-                borderRadius: "8px",
-                border: errors.astroInterest
-                  ? "1px solid red"
-                  : "1px solid #ccc",
-                transition: "border 0.3s ease",
-                width: "100%",
-              }}
             />
           </Box>
         </CardContent>

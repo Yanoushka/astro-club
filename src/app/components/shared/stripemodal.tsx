@@ -1,6 +1,7 @@
+import { Box, Modal } from "@mui/joy";
+import { Button, Typography } from "@mui/material";
 import { useState } from "react";
 import PaymentPage from "./stripepayment";
-import { Box, Button, Modal, Typography } from "@mui/joy";
 
 interface PaymentModalProps {
   onPaymentSuccess: (success: boolean) => void;
