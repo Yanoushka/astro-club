@@ -40,6 +40,14 @@ export default function AstroResume() {
     router.push("/");
   };
 
+  const generateAstroSummary = () => {
+    return `
+    Based on your birth date of ${astroData.birthDate}, your birth time of ${astroData.birthTime},
+    and your location of ${astroData.birthLocation}, 
+    we have crafted a unique astrological reading that reflects your personality traits and potential paths. 
+    Your interest in ${astroData.astroInterest} suggests that you may find yourself drawn to exploring deeper insights into your cosmic influences.`;
+  };
+
   return (
     <Box
       sx={{
@@ -47,14 +55,13 @@ export default function AstroResume() {
         justifyContent: "center",
         alignItems: "center",
         padding: "20px",
-        height: "100vh",
+        height: "100%",
         overflow: "auto",
       }}
     >
       <Card
         sx={{
           width: { xs: "90%", sm: "400px" },
-          maxHeight: "80vh",
           borderRadius: "16px",
           boxShadow: "0 4px 20px rgba(0, 0, 0, 0.1)",
           backgroundColor: "white",
@@ -66,7 +73,12 @@ export default function AstroResume() {
           <Typography
             variant="h4"
             component="div"
-            sx={{ fontWeight: "bold", mb: 2, textAlign: "center" }}
+            sx={{
+              fontWeight: "bold",
+              mb: 2,
+              textAlign: "center",
+              color: "#3f51b5",
+            }}
           >
             Your Cosmic Reading
           </Typography>
@@ -76,15 +88,36 @@ export default function AstroResume() {
             Based on your unique celestial alignment:
           </Typography>
 
-          <Typography sx={{ marginBottom: "16px", textAlign: "center" }}>
-            Reading based on birth details:{" "}
-            {new Date(astroData.birthDate!).getHours().toLocaleString()} at{" "}
-            {astroData.birthTime} in {astroData.birthLocation}
-          </Typography>
+          <Box sx={{ marginBottom: "16px" }}>
+            <Typography sx={{ fontWeight: "bold", textAlign: "center" }}>
+              Birth Details
+            </Typography>
+            <Typography sx={{ textAlign: "center" }}>
+              Date: {new Date(astroData.birthDate!).toLocaleDateString()}
+            </Typography>
+            <Typography sx={{ textAlign: "center" }}>
+              Time: {astroData.birthTime}
+            </Typography>
+            <Typography sx={{ textAlign: "center" }}>
+              Location: {astroData.birthLocation}
+            </Typography>
+          </Box>
 
-          <Typography sx={{ marginBottom: "16px", textAlign: "center" }}>
-            Your interest: {astroData.astroInterest}
-          </Typography>
+          <Box sx={{ marginBottom: "16px" }}>
+            <Typography sx={{ fontWeight: "bold", textAlign: "center" }}>
+              Your Interest
+            </Typography>
+            <Typography sx={{ textAlign: "center" }}>
+              {astroData.astroInterest}
+            </Typography>
+          </Box>
+
+          <Box sx={{ marginBottom: "16px", textAlign: "center" }}>
+            <Typography sx={{ fontWeight: "bold", marginBottom: "10px" }}>
+              Summary
+            </Typography>
+            <Typography>{generateAstroSummary()}</Typography>
+          </Box>
 
           <Box
             sx={{
