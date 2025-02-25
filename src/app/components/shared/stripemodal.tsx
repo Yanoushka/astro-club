@@ -43,19 +43,22 @@ export default function PaymentModal({ onPaymentSuccess }: PaymentModalProps) {
             top: "50%",
             left: "50%",
             transform: "translate(-50%, -50%)",
-            width: 400,
+            width: "90%",
+            maxWidth: "400px",
             bgcolor: "white",
             boxShadow: 24,
             p: 4,
             borderRadius: 2,
             border: "1px solid #ddd",
+            maxHeight: "90vh",
+            overflowY: "auto",
           }}
         >
           <Typography sx={{ fontWeight: "bold", marginBottom: 2 }}>
             Payment details
           </Typography>
           <Typography sx={{ color: "text.secondary", marginBottom: 2 }}>
-            Numéro : 4242 4242 4242 4242 <br />
+            Number : 4242 4242 4242 4242 <br />
             Date : 12/34 <br />
             CVC : 123
           </Typography>
@@ -63,7 +66,7 @@ export default function PaymentModal({ onPaymentSuccess }: PaymentModalProps) {
             <Typography
               sx={{ textAlign: "center", color: "green", marginTop: 2 }}
             >
-              ✅ Payment success, thanks ! 🎉
+              ✅ Payment success, thanks! 🎉
             </Typography>
           ) : (
             <PaymentPage
