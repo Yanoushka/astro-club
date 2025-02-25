@@ -46,13 +46,12 @@ export default function AstroResume() {
     Your interest in ${astroData.astroInterest} suggests that you may find yourself drawn to exploring deeper insights into your cosmic influences.`;
   };
 
-  const formatBirthTime = (isoString) => {
+  const formatBirthTime = (isoString: string | null | undefined) => {
     if (!isoString) return "N/A";
     const date = new Date(isoString);
     return date.toLocaleTimeString("fr-FR", {
       hour: '2-digit',
       minute: '2-digit',
-      hour12: false,
     });
   };
 
