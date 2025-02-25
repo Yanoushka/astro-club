@@ -13,7 +13,7 @@ import {
   Typography,
 } from "@mui/joy";
 import { useRouter } from "next/navigation";
-import React from "react";
+import React, { useEffect } from "react";
 
 export default function AstroDetails() {
   const router = useRouter();
@@ -24,6 +24,14 @@ export default function AstroDetails() {
     birthTime: false,
     astroInterest: false,
   });
+
+  const { userData } = useAstrologyStore();
+
+  useEffect(() => {
+    if (!userData.birthDate || !userData.birthLocation) {
+      router.replace("/onboarding/form");
+    }
+  }, [userData, router]);
 
   const interests = [
     { value: "career", label: "Career & Ambitions" },

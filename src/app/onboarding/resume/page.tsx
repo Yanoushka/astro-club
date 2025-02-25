@@ -11,14 +11,27 @@ import {
   Link,
   Typography,
 } from "@mui/joy";
-import { useState } from "react";
+import { useRouter } from "next/navigation";
+import { useEffect, useState } from "react";
 
 export default function AstroResume() {
   const astroState = useAstrologyStore.getState();
   const astroData = astroState.getUserData();
-  console.log("astroData: ", astroData);
+  const router = useRouter();
+  const { userData } = useAstrologyStore();
   const [paymentSuccess, setPaymentSuccess] = useState(false);
-  console.log("astroData: ", astroData);
+
+  useEffect(() => {
+    if (
+      !userData.birthDate ||
+      !userData.birthLocation ||
+      !userData.astroInterest ||
+      !userData.birthTime
+    ) {
+      router.replace("/onboarding/form");
+    }
+  }, [userData, router]);
+
   const handlePaymentSuccess = (success: boolean) => {
     setPaymentSuccess(success);
     console.log("Paiement réussi :", success);
