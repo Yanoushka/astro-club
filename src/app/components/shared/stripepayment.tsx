@@ -8,7 +8,8 @@ import {
   Elements,
 } from "@stripe/react-stripe-js";
 import { loadStripe } from "@stripe/stripe-js";
-import { Box, Button, Typography } from "@mui/material";
+import { Box, Button } from "@mui/material";
+import { Typography } from "@mui/joy";
 
 // need to be put in env
 const stripePromise = loadStripe(
@@ -77,9 +78,7 @@ const StripePayment: React.FC<PaymentPageProps> = ({
       <Typography sx={{ fontWeight: "bold", mb: 2 }}>Test Payment</Typography>
       <form onSubmit={handleSubmit} style={{ marginTop: 20 }}>
         <Box sx={{ mb: 2 }}>
-          <Typography variant="body2" sx={{ mb: 1, textAlign: "left" }}>
-            Card number
-          </Typography>
+          <Typography sx={{ mb: 1, textAlign: "left" }}>Card number</Typography>
           <Box
             sx={{
               border: "1px solid #ddd",
@@ -96,7 +95,7 @@ const StripePayment: React.FC<PaymentPageProps> = ({
 
         <Box sx={{ display: "flex", gap: 2 }}>
           <Box sx={{ flex: 1 }}>
-            <Typography variant="body2" sx={{ mb: 1, textAlign: "left" }}>
+            <Typography sx={{ mb: 1, textAlign: "left" }}>
               Expiration
             </Typography>
             <Box
@@ -114,9 +113,7 @@ const StripePayment: React.FC<PaymentPageProps> = ({
           </Box>
 
           <Box sx={{ flex: 1 }}>
-            <Typography variant="body2" sx={{ mb: 1, textAlign: "left" }}>
-              CVC
-            </Typography>
+            <Typography sx={{ mb: 1, textAlign: "left" }}>CVC</Typography>
             <Box
               sx={{
                 border: "1px solid #ddd",
