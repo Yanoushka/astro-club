@@ -9,7 +9,7 @@ export default function FooterAppBar() {
         <FavoriteIcon
           sx={{
             color: "#fa8cf6",
-            mx: 1, // ajoute une marge horizontale
+            mx: 1,
             fontSize: "30px",
           }}
         />{" "}
