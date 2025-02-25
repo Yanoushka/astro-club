@@ -1,4 +1,5 @@
-import { FormControl, FormLabel } from "@mui/material";
+import { FormLabel } from "@mui/joy";
+import { FormControl } from "@mui/material";
 import { AdapterDayjs } from "@mui/x-date-pickers/AdapterDayjs";
 import { DatePicker } from "@mui/x-date-pickers/DatePicker";
 import { LocalizationProvider } from "@mui/x-date-pickers/LocalizationProvider";
@@ -22,7 +23,7 @@ const Calendar: React.FC<CalendarProps> = ({
 }) => {
   return (
     <FormControl fullWidth error={error}>
-      <FormLabel>{label}</FormLabel>
+      <FormLabel sx={{marginBottom: 1}}>{label}</FormLabel>
       <LocalizationProvider dateAdapter={AdapterDayjs}>
         <DatePicker
           value={value}

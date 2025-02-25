@@ -1,7 +1,13 @@
 import { useState } from "react";
-import { CardElement, useStripe, useElements, Elements } from "@stripe/react-stripe-js";
+import {
+  CardElement,
+  useStripe,
+  useElements,
+  Elements,
+} from "@stripe/react-stripe-js";
 import { loadStripe } from "@stripe/stripe-js";
-import { Box, Button, Typography } from "@mui/material";
+import { Box, Button } from "@mui/material";
+import { Typography } from "@mui/joy";
 
 // public key need to be put in env
 const stripePromise = loadStripe(
@@ -13,7 +19,10 @@ interface PaymentPageProps {
   onPaymentSuccess: (success: boolean) => void;
 }
 
-const StripePayment: React.FC<PaymentPageProps> = ({ onClose, onPaymentSuccess }) => {
+const StripePayment: React.FC<PaymentPageProps> = ({
+  onClose,
+  onPaymentSuccess,
+}) => {
   const stripe = useStripe();
   const elements = useElements();
   const [loading, setLoading] = useState(false);
@@ -47,7 +56,7 @@ const StripePayment: React.FC<PaymentPageProps> = ({ onClose, onPaymentSuccess }
 
   return (
     <Box sx={{ textAlign: "center", p: 3 }}>
-      <Typography variant="h5">Paiement Test</Typography>
+      <Typography>Paiement Test</Typography>
       <form onSubmit={handleSubmit} style={{ marginTop: 20 }}>
         <CardElement />
         <Box sx={{ display: "flex", justifyContent: "center", mt: 3 }}>
@@ -65,16 +74,21 @@ const StripePayment: React.FC<PaymentPageProps> = ({ onClose, onPaymentSuccess }
             color="secondary"
             sx={{ ml: 2 }}
           >
-            Fermer
+            Close
           </Button>
         </Box>
       </form>
-      {message && <Typography sx={{ color: "green", mt: 2 }}>{message}</Typography>}
+      {message && (
+        <Typography sx={{ color: "green", mt: 2 }}>{message}</Typography>
+      )}
     </Box>
   );
 };
 
-export default function PaymentPage({ onClose, onPaymentSuccess }: PaymentPageProps) {
+export default function PaymentPage({
+  onClose,
+  onPaymentSuccess,
+}: PaymentPageProps) {
   return (
     <Elements stripe={stripePromise}>
       <StripePayment onClose={onClose} onPaymentSuccess={onPaymentSuccess} />

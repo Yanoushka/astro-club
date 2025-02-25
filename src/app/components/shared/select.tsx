@@ -1,4 +1,4 @@
-import { FormHelperText } from "@mui/joy";
+import { FormHelperText, FormLabel } from "@mui/joy";
 import {
   FormControl,
   InputLabel,
@@ -38,7 +38,7 @@ const CustomSelect: React.FC<CustomSelectProps> = ({
 
   return (
     <FormControl fullWidth error={error}>
-      <InputLabel>{label}</InputLabel>
+      <FormLabel sx={{ marginBottom: 1 }}>{label}</FormLabel>
       <Select
         value={selectedValue}
         onChange={handleChange}
@@ -49,6 +49,9 @@ const CustomSelect: React.FC<CustomSelectProps> = ({
           width: "100%",
         }}
       >
+        <MenuItem value="" disabled>
+          -
+        </MenuItem>
         {options.map((option) => (
           <MenuItem key={option.value} value={option.value}>
             {option.label}

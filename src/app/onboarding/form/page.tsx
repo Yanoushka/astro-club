@@ -101,6 +101,7 @@ export default function AstroForm() {
 
           <Box sx={{ mb: 2, height: 80 }}>
             <Calendar
+              label="Date of Birth"
               onChange={onDateChange}
               required={true}
               error={errors.birthDate}

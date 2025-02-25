@@ -14,7 +14,7 @@ interface CustomTimePickerProps {
 }
 
 const CustomTimePicker: React.FC<CustomTimePickerProps> = ({
-  label = "Select a time",
+  label ,
   value,
   onChange,
   error = false,
@@ -24,14 +24,14 @@ const CustomTimePicker: React.FC<CustomTimePickerProps> = ({
       <LocalizationProvider dateAdapter={AdapterDayjs}>
         <FormLabel>{label}</FormLabel>
         <TimePicker
+          ampm={false}
+          value={value}
+          onChange={onChange}
           sx={{
             borderRadius: "8px",
             transition: "border 0.3s ease",
             width: "100%",
           }}
-          ampm={false}
-          value={value}
-          onChange={onChange}
           slotProps={{
             textField: {
               inputProps: { readOnly: true },

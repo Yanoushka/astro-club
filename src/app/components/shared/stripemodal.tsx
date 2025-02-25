@@ -1,5 +1,5 @@
-import { Box, Modal } from "@mui/joy";
-import { Button, Typography } from "@mui/material";
+import { Box, Modal, Typography } from "@mui/joy";
+import { Button } from "@mui/material";
 import { useState } from "react";
 import PaymentPage from "./stripepayment";
 
@@ -33,7 +33,7 @@ export default function PaymentModal({ onPaymentSuccess }: PaymentModalProps) {
           fontWeight: "bold",
         }}
       >
-        Payer
+        Pay
       </Button>
 
       <Modal open={open} onClose={() => setOpen(false)}>
@@ -51,8 +51,8 @@ export default function PaymentModal({ onPaymentSuccess }: PaymentModalProps) {
             border: "1px solid #ddd",
           }}
         >
-          <Typography variant="h5" sx={{ fontWeight: "bold", marginBottom: 2 }}>
-            Détails de paiement
+          <Typography sx={{ fontWeight: "bold", marginBottom: 2 }}>
+            Payment details
           </Typography>
           <Typography sx={{ color: "text.secondary", marginBottom: 2 }}>
             Numéro : 4242 4242 4242 4242 <br />
@@ -61,10 +61,9 @@ export default function PaymentModal({ onPaymentSuccess }: PaymentModalProps) {
           </Typography>
           {paymentSuccess ? (
             <Typography
-              variant="h6"
               sx={{ textAlign: "center", color: "green", marginTop: 2 }}
             >
-              ✅ Paiement effectué avec succès, merci ! 🎉
+              ✅ Payment success, thanks ! 🎉
             </Typography>
           ) : (
             <PaymentPage
