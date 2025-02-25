@@ -66,12 +66,16 @@ export default function AstroForm() {
         display: "flex",
         justifyContent: "center",
         alignItems: "center",
+        padding: "20px",
+        height: "100vh",
+        overflow: "auto",
       }}
     >
       <Card
         sx={{
-          minWidth: 500,
+          width: { xs: "90%" },
           minHeight: 400,
+          minWidth: 300,
           p: 3,
           borderRadius: "16px",
           boxShadow: "lg",
@@ -100,7 +104,7 @@ export default function AstroForm() {
             Let's start with the basics of your astrological profile.
           </Typography>
 
-          <Box sx={{ mb: 2, height: 80}}>
+          <Box sx={{ mb: 2, height: 80 }}>
             <Calendar
               onChange={onDateChange}
               required={true}
@@ -108,7 +112,7 @@ export default function AstroForm() {
             />
           </Box>
 
-          <Box sx={{ mb: 2, height: 80}}>
+          <Box sx={{ mb: 2, height: 80 }}>
             <InputCustom
               label="Place of Birth"
               placeholder="Enter your birth city"

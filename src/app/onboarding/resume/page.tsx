@@ -41,86 +41,98 @@ export default function AstroResume() {
   };
 
   return (
-    <Card
+    <Box
       sx={{
-        minWidth: 500,
-        minHeight: 400,
-        borderRadius: "16px",
-        boxShadow: "0 4px 20px rgba(0, 0, 0, 0.1)",
-        backgroundColor: "white",
+        display: "flex",
+        justifyContent: "center",
+        alignItems: "center",
         padding: "20px",
+        height: "100vh",
+        overflow: "auto",
       }}
     >
-      <CardContent>
-        <Typography
-          variant="h4"
-          component="div"
-          sx={{ fontWeight: "bold", mb: 2 }}
-        >
-          Your Cosmic Reading
-        </Typography>
-        <Typography sx={{ color: "text.secondary", mb: 2 }}>
-          Based on your unique celestial alignment:
-        </Typography>
-
-        <Typography sx={{ marginBottom: "16px" }}>
-          Reading based on birth details:{" "}
-          {new Date(astroData.birthDate!).getHours().toLocaleString()} at{" "}
-          {astroData.birthTime} in {astroData.birthLocation}
-        </Typography>
-
-        <Typography sx={{ marginBottom: "16px" }}>
-          Your interest: {astroData.astroInterest}
-        </Typography>
-
-        <Box
-          sx={{
-            height: "80px",
-            marginBottom: "20px",
-            display: "flex",
-            alignItems: "center",
-          }}
-        >
-          <Typography sx={{ fontWeight: "bold", marginRight: "10px" }}>
-            See more for only $9.90
+      <Card
+        sx={{
+          width: { xs: "90%", sm: "400px" },
+          minHeight: 400,
+          borderRadius: "16px",
+          boxShadow: "0 4px 20px rgba(0, 0, 0, 0.1)",
+          backgroundColor: "white",
+          padding: "20px",
+        }}
+      >
+        <CardContent>
+          <Typography
+            variant="h4"
+            component="div"
+            sx={{ fontWeight: "bold", mb: 2, textAlign: "center" }}
+          >
+            Your Cosmic Reading
           </Typography>
-          <PaymentModal onPaymentSuccess={handlePaymentSuccess} />
-        </Box>
+          <Typography sx={{ color: "text.secondary", mb: 2, textAlign: "center" }}>
+            Based on your unique celestial alignment:
+          </Typography>
 
-        {paymentSuccess && (
+          <Typography sx={{ marginBottom: "16px", textAlign: "center" }}>
+            Reading based on birth details:{" "}
+            {new Date(astroData.birthDate!).getHours().toLocaleString()} at{" "}
+            {astroData.birthTime} in {astroData.birthLocation}
+          </Typography>
+
+          <Typography sx={{ marginBottom: "16px", textAlign: "center" }}>
+            Your interest: {astroData.astroInterest}
+          </Typography>
+
           <Box
             sx={{
-              height: "40px",
-              background: "#4caf50",
-              color: "white",
-              borderRadius: "8px",
+              height: "80px",
+              marginBottom: "20px",
               display: "flex",
               alignItems: "center",
               justifyContent: "center",
-              marginBottom: "20px",
             }}
           >
-            ✅ Thanks for your subscription! Good luck!
+            <Typography sx={{ fontWeight: "bold", marginRight: "10px" }}>
+              See more for only $9.90
+            </Typography>
+            <PaymentModal onPaymentSuccess={handlePaymentSuccess} />
           </Box>
-        )}
-      </CardContent>
-      <CardActions>
-        <Button
-          onClick={handleFinished}
-          variant="contained"
-          sx={{
-            backgroundColor: "#6B73FF",
-            color: "white",
-            borderRadius: "8px",
-            "&:hover": {
-              backgroundColor: "#556cd6",
-            },
-            width: "100%",
-          }}
-        >
-          Finished
-        </Button>
-      </CardActions>
-    </Card>
+
+          {paymentSuccess && (
+            <Box
+              sx={{
+                height: "40px",
+                background: "#4caf50",
+                color: "white",
+                borderRadius: "8px",
+                display: "flex",
+                alignItems: "center",
+                justifyContent: "center",
+                marginBottom: "20px",
+              }}
+            >
+              ✅ Thanks for your subscription! Good luck!
+            </Box>
+          )}
+        </CardContent>
+        <CardActions>
+          <Button
+            onClick={handleFinished}
+            variant="contained"
+            sx={{
+              backgroundColor: "#6B73FF",
+              color: "white",
+              borderRadius: "8px",
+              "&:hover": {
+                backgroundColor: "#556cd6",
+              },
+              width: "100%",
+            }}
+          >
+            Finished
+          </Button>
+        </CardActions>
+      </Card>
+    </Box>
   );
 }

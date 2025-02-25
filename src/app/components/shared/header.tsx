@@ -3,13 +3,29 @@ import AppBar from "@mui/material/AppBar";
 import Container from "@mui/material/Container";
 import Toolbar from "@mui/material/Toolbar";
 import Typography from "@mui/material/Typography";
+import { useMediaQuery } from "@mui/material";
 
-function ResponsiveAppBar() {
+export default function ResponsiveAppBar() {
+  const isLargeScreen = useMediaQuery("(min-width:600px)");
+
   return (
-    <AppBar position="static">
+    <AppBar
+      position="static"
+      sx={{
+        backgroundColor: "#1a1a2e",
+        boxShadow: "0 4px 10px rgba(0, 0, 0, 0.5)",
+      }}
+    >
       <Container maxWidth="xl">
         <Toolbar disableGutters>
-          <AdbIcon sx={{ display: { xs: "none", md: "flex" }, mr: 1 }} />
+          <AdbIcon
+            sx={{
+              display: { xs: "none", md: "flex" },
+              color: "#f9c74f",
+              mr: 1,
+              fontSize: isLargeScreen ? "40px" : "30px",
+            }}
+          />
           <Typography
             variant="h6"
             noWrap
@@ -21,7 +37,23 @@ function ResponsiveAppBar() {
               fontFamily: "monospace",
               fontWeight: 700,
               letterSpacing: ".3rem",
-              color: "inherit",
+              color: "#f9c74f",
+              textDecoration: "none",
+              fontSize: isLargeScreen ? "1.5rem" : "1.2rem",
+            }}
+          >
+            AstroClub
+          </Typography>
+          <Typography
+            variant="h6"
+            noWrap
+            component="a"
+            href="/"
+            sx={{
+              display: { xs: "flex", md: "none" },
+              fontFamily: "monospace",
+              fontWeight: 700,
+              color: "#f9c74f",
               textDecoration: "none",
             }}
           >
@@ -32,5 +64,3 @@ function ResponsiveAppBar() {
     </AppBar>
   );
 }
-
-export default ResponsiveAppBar;

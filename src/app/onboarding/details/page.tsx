@@ -73,68 +73,86 @@ export default function AstroDetails() {
   };
 
   return (
-    <Card
+    <Box
       sx={{
-        minWidth: 500,
-        minHeight: 350,
-        borderRadius: "16px",
-        boxShadow: "0 4px 20px rgba(0, 0, 0, 0.1)",
-        backgroundColor: "white",
+        display: "flex",
+        justifyContent: "center",
+        alignItems: "center",
         padding: "20px",
+        height: "100vh",
+        overflow: "auto",
       }}
     >
-      <CardContent>
-        <Typography variant="h4" component="div" sx={{ fontWeight: 'bold', mb: 2 }}>
-          Go Deeper!
-        </Typography>
-        <Typography sx={{ color: "text.secondary", mb: 3 }}>
-          Let's keep going with the deep details of your astrological profile.
-        </Typography>
+      <Card
+        sx={{
+          width: { xs: "90%" },
+          minHeight: 300,
+          borderRadius: "16px",
+          boxShadow: "0 4px 20px rgba(0, 0, 0, 0.1)",
+          backgroundColor: "white",
+          padding: "20px",
+        }}
+      >
+        <CardContent>
+          <Typography
+            variant="h4"
+            component="div"
+            sx={{ fontWeight: 'bold', mb: 2, textAlign: "center" }}
+          >
+            Go Deeper!
+          </Typography>
+          <Typography sx={{ color: "text.secondary", mb: 3, textAlign: "center" }}>
+            Let's keep going with the deep details of your astrological profile.
+          </Typography>
 
-        <Box sx={{ marginBottom: "20px", height: 100 }}>
-          <CustomTimePicker
-            label="Birth Time"
-            onChange={onTimeChange}
-            error={errors.birthTime}
+          <Box sx={{ marginBottom: "20px", height: 100 }}>
+            <CustomTimePicker
+              label="Birth Time"
+              onChange={onTimeChange}
+              error={errors.birthTime}
+              sx={{
+                borderRadius: "8px",
+                border: errors.birthTime ? "1px solid red" : "1px solid #ccc",
+                transition: "border 0.3s ease",
+                width: "100%",
+              }}
+            />
+          </Box>
+          
+          <Box sx={{ marginBottom: "20px", height: 80 }}>
+            <CustomSelect
+              label="Select an Interest"
+              options={interests}
+              onChange={onInterestChange}
+              error={errors.astroInterest}
+              helperText={errors.astroInterest ? "Please add an interest" : ""}
+              sx={{
+                borderRadius: "8px",
+                border: errors.astroInterest ? "1px solid red" : "1px solid #ccc",
+                transition: "border 0.3s ease",
+                width: "100%",
+              }}
+            />
+          </Box>
+        </CardContent>
+        <CardActions>
+          <Button
+            onClick={handleSubmit}
+            variant="contained"
             sx={{
+              backgroundColor: "#6B73FF",
+              color: "white",
               borderRadius: "8px",
-              border: errors.birthTime ? "1px solid red" : "1px solid #ccc",
-              transition: "border 0.3s ease",
+              width: "100%",
+              '&:hover': {
+                backgroundColor: "#556cd6",
+              },
             }}
-          />
-        </Box>
-        
-        <Box sx={{ marginBottom: "20px", height: 80 }}>
-          <CustomSelect
-            label="Select an Interest"
-            options={interests}
-            onChange={onInterestChange}
-            error={errors.astroInterest}
-            helperText={errors.astroInterest ? "Please add an interest" : ""}
-            sx={{
-              borderRadius: "8px",
-              border: errors.astroInterest ? "1px solid red" : "1px solid #ccc",
-              transition: "border 0.3s ease",
-            }}
-          />
-        </Box>
-      </CardContent>
-      <CardActions>
-        <Button
-          onClick={handleSubmit}
-          variant="contained"
-          sx={{
-            backgroundColor: "#6B73FF",
-            color: "white",
-            borderRadius: "8px",
-            '&:hover': {
-              backgroundColor: "#556cd6",
-            },
-          }}
-        >
-          Next
-        </Button>
-      </CardActions>
-    </Card>
+          >
+            Next
+          </Button>
+        </CardActions>
+      </Card>
+    </Box>
   );
 }
