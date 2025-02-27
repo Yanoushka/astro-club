@@ -1,4 +1,3 @@
-import { Dayjs } from 'dayjs';
 import { create } from 'zustand';
 
 interface UserData {
