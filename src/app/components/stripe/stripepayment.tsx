@@ -11,10 +11,8 @@ import { loadStripe } from "@stripe/stripe-js";
 import { Box, Button } from "@mui/material";
 import { Typography } from "@mui/joy";
 
-// need to be put in env
-const stripePromise = loadStripe(
-  "pk_test_51QwAjiQIr5sCMzToswbDwv07A3FfnkYUAjKBMcsizERJxNHy1YSzFTxOfyVeqsuoDg0j6fzfMutVJHVAMqFGh9j400O455HwxO"
-);
+const stripeKey = process.env.NEXT_PUBLIC_API_STRIPE_KEY;
+const stripePromise = loadStripe(stripeKey);
 
 interface PaymentPageProps {
   onClose: () => void;

@@ -1,6 +1,6 @@
 "use client";
 
-import PaymentModal from "@/app/components/shared/stripemodal";
+import PaymentModal from "@/app/components/stripe/stripemodal";
 import { useAstrologyStore } from "@/lib/store";
 import { Box, Card, CardActions, CardContent } from "@mui/joy";
 import { Button, Typography } from "@mui/material";
@@ -38,7 +38,7 @@ export default function AstroResume() {
     return `
     Based on your birth date of ${new Date(
       astroData.birthDate!
-    ).toLocaleDateString("fr-FR", {
+    ).toLocaleDateString("en-EN", {
       year: "numeric",
       month: "long",
       day: "numeric",
