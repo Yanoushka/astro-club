@@ -1,4 +1,5 @@
-import { FormControl, FormHelperText, FormLabel, Input } from "@mui/joy";
+import { FormLabel, Input } from "@mui/joy";
+import { FormControl, FormHelperText } from "@mui/material";
 import React from "react";
 
 interface InputCustomProps {
@@ -24,14 +25,16 @@ const InputCustom: React.FC<InputCustomProps> = ({
 }) => {
   return (
     <div>
-      <FormControl error={error}>
+      <FormControl error={error} sx={{ width: "100%" }}>
         <FormLabel>{label}</FormLabel>
         <Input
+          sx={{ margin: "8px 0 3px 0px" }}
           placeholder={placeholder}
           value={value}
           onChange={onChange}
           onBlur={onBlur}
           required={required}
+          error={error}
         />
         <FormHelperText>{!!error ? helperText : ""}</FormHelperText>
       </FormControl>

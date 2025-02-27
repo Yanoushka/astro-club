@@ -1,7 +1,7 @@
-import { FormHelperText, FormLabel } from "@mui/joy";
+import { FormLabel } from "@mui/joy";
 import {
   FormControl,
-  InputLabel,
+  FormHelperText,
   MenuItem,
   Select,
   SelectChangeEvent,
